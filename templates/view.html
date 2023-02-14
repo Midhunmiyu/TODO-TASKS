@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+{% block content %}
+<h1 style="font-family: 'Ultra', serif; font-weight:400">These Are Your TODO Tasks</h1>
+        <br>
+        <br>
+              <table class="table table-dark">
+                    <thead>
+                        <tr>
+                          <th scope="col">SL NO</th>
+                          <th scope="col">REMINDER</th>
+                          <th scope="col">DATE</th>
+                          <th scope="col">DELETE</th>
+                          <th scope="col">UPDATE</th>
+
+                        </tr>
+                    </thead>
+                    <tbody
+                        <tr>
+                            {% for i in data %}
+                            <th scope="row">{{ forloop.counter}}</th>
+                            <td>{{ i.Reminder }}</td>
+                            <td>{{ i.date }}</td>
+                            <td><a href="{% url 'delete' i.id %}"> <button type="button" class="btn btn-primary">DELETE</button></a></td>
+                            <td><a href="{% url 'update' i.id %}"> <button type="button" class="btn btn-primary">UPDATE</button></a></td>
+
+                        </tr>
+                            {% endfor %}
+                    </tbody>
+              </table>
+
+
+{% endblock %}
